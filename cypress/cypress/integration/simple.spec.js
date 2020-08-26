@@ -2,7 +2,6 @@ context('Habitica Tests', () => {
 
     it.skip('makes a wrong login attemp', () => {
         cy.visit('https://habitica.com/static/home')
-
         cy.get('#usernameInput').type('fake@email.com').should('have.value', 'fake@email.com');
         cy.get('#passwordInput').type('fake@email.com');
         cy.get('.btn-info[type="submit"]').click();
@@ -20,12 +19,12 @@ context('Habitica Tests', () => {
 
     });
 
-    it.skip('creates account with existing user data', () => {
+    it('creates account with existing user data', () => {
         cy.visit('https://habitica.com/static/home');
-        cy.get('#usernameInput').type('fakeWorkshopUser123').should('have.value', 'fakeWorkshopUser123');
-        cy.get('[type="email"]').type('fakeWorkshopUser123@email.com').should('have.value', 'fakeWorkshopUser123@email.com');
-        cy.get('[placeholder="Password"]').type('FakeWorkshopUser123');
-        cy.get('[placeholder="Confirm Password"]').type('FakeWorkshopUser123');
+        cy.get('#usernameInput').type('fakeWorkshopUser124').should('have.value', 'fakeWorkshopUser124');
+        cy.get('[type="email"]').type('fakeWorkshopUser124@email.com').should('have.value', 'fakeWorkshopUser124@email.com');
+        cy.get('[placeholder="Password"]').type('FakeWorkshopUser124');
+        cy.get('[placeholder="Confirm Password"]').type('FakeWorkshopUser124');
         cy.get('.btn-info[type="submit"]').should('be.disabled');
     });
 
