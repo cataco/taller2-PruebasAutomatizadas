@@ -10,8 +10,8 @@ context('Habitica Tests', () => {
 
     it('creates account', () => {
         cy.visit('https://habitica.com/static/home');
-        cy.get('#usernameInput').type('fakeWorkshopUser124').should('have.value', 'fakeWorkshopUser124');
-        cy.get('[type="email"]').type('fakeWorkshopUser124@email.com').should('have.value', 'fakeWorkshopUser124@email.com');
+        cy.get('#usernameInput').type('workshopUser128').should('have.value', 'workshopUser128');
+        cy.get('[type="email"]').type('workshopUser128@email.com').should('have.value', 'workshopUser128@email.com');
         cy.get('[placeholder="Password"]').type('FakeWorkshopUser124');
         cy.get('[placeholder="Confirm Password"]').type('FakeWorkshopUser124');
         cy.get('.btn-info[type="submit"]').click()
@@ -21,8 +21,8 @@ context('Habitica Tests', () => {
 
     it('creates account with existing user data', () => {
         cy.visit('https://habitica.com/static/home');
-        cy.get('#usernameInput').type('fakeWorkshopUser124').should('have.value', 'fakeWorkshopUser124');
-        cy.get('[type="email"]').type('fakeWorkshopUser124@email.com').should('have.value', 'fakeWorkshopUser124@email.com');
+        cy.get('#usernameInput').type('workshopUser128').should('have.value', 'workshopUser128');
+        cy.get('[type="email"]').type('workshopUser128@email.com').should('have.value', 'workshopUser128@email.com');
         cy.get('[placeholder="Password"]').type('FakeWorkshopUser124');
         cy.get('[placeholder="Confirm Password"]').type('FakeWorkshopUser124');
         cy.get('.btn-info[type="submit"]').should('be.disabled');
@@ -37,14 +37,10 @@ context('Habitica Tests', () => {
         cy.get('.summary-count').type("This is a Cypress Challenge. Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
         cy.get('.description-textarea').type("This is the description of my new cypress challenge");
         cy.get('select').select('00000000-0000-4000-A000-000000000000');
-        /* This category box is never displayed when clicking on the category select
-        cy.get('.category-select').click()
-            .get('.category-box').should('be.visible')
-            .get('#challenge-modal-cat-hobbies_occupations').click()
-            .contains('Close').click();*/
-        cy.get('[type="number"]').type('0');
+        cy.get('.category-select').click({ force: true })
+        .get('input[id="challenge-modal-cat-creativity"]').check({ force: true });
+        cy.contains('Close').click({ force: true });
         cy.contains('Add Challenge Tasks').click();
-        //cy.get('.notifications-top-pos-normal').should('be.visible');
     });
 
     it('creates a new habit', () => {
